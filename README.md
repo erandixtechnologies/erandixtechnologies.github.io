@@ -1,2 +1,1 @@
-## Hi there 👋
-## Erandix Post
+<h1>Welcome to Erandix Technologies.</h1>
