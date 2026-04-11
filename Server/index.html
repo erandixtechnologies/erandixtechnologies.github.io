@@ -44,7 +44,6 @@
     const BODY=document.querySelector("body");
 
     const AUTOSTART=()=>{
-        ROUTEJS("FUNCTIONS");ROUTECSS("STYLES");
         if (localStorage.getItem("Env") === "Dev" ) {
             const script = document.createElement("script");
             script.src = "./index.js";
@@ -59,7 +58,7 @@
     };
 
     if (localStorage.getItem("Updates")) {
-        AUTOSTART();
+       ROUTEJS("ERANDIXCONFIG");AUTOSTART();
     } else {
         if (localStorage.getItem("Env") === "Dev" ) {
             AUTOSTART(); 

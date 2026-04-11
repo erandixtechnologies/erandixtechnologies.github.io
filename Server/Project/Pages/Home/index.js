@@ -1,1 +1,1 @@
-alert("Home Page")
+const Test=document.querySelector(".Test");

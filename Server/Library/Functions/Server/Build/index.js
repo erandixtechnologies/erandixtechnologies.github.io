@@ -1,0 +1,1 @@
+BODY.innerHTML=HomePage;
