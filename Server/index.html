@@ -8,41 +8,28 @@
 <body></body>
 <script>
     const ROUTEJS=(NAME)=>{
-
         const code = localStorage.getItem(NAME);
-
         if (!code) {
             console.warn("No code found in localStorage for key:",NAME);
             return;
-        }
-
+        };
         const script = document.createElement("script");
         script.type = "text/javascript";
         script.textContent = code;
-
         document.body.appendChild(script);
-
     };
-
     const ROUTECSS=(NAME)=>{
-
         const css = localStorage.getItem(NAME);
-
         if (!css) {
             console.warn("No CSS found for key:", NAME);
             return;
-        }
-
+        };
         const style = document.createElement("style");
         style.type = "text/css";
         style.textContent = css;
-
         document.head.appendChild(style);
-
     };
-
     const BODY=document.querySelector("body");
-
     const AUTOSTART=()=>{
         if (localStorage.getItem("Env") === "Dev" ) {
             const script = document.createElement("script");
@@ -50,27 +37,24 @@
             script.defer = true;
             document.head.appendChild(script);
         }else{
-            const script = document.createElement("script");
-            script.src = "./index.js";
-            script.defer = true;
-            document.head.appendChild(script);
+            if (navigator.onLine) {
+                const script = document.createElement("script");
+                script.src = "./index.js";
+                script.defer = true;
+                document.head.appendChild(script);
+            }else{
+                sessionStorage.setItem("OfflineMode","True")
+            };
         };
     };
-
     if (localStorage.getItem("Updates")) {
        ROUTEJS("ERANDIXCONFIG");AUTOSTART();
     } else {
-        if (localStorage.getItem("Env") === "Dev" ) {
-            AUTOSTART(); 
+        if (navigator.onLine) {
+            AUTOSTART();
         } else {
-            if (navigator.onLine) {
-                AUTOSTART();
-            } else {
-
-
-                
-            }; 
-        };
+     
+        }; 
     };
 </script>
 </html>
