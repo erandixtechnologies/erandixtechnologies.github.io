@@ -1,3 +1,19 @@
 [
-    {"Name":"Main","Path":"/Main/"},{"Name":"Body","Path":"/Main/"}
+    {"Name":"Main","Path":"/Main/"},{"Name":"Body","Path":"/Main/"},
+    {"Name":"Audio","Path":"/Main/"},
+    {"Name":"Header","Path":"/Main/"},
+    {"Name":"Footer","Path":"/Main/"},
+    {"Name":"ParaGraph","Path":"/Main/"},
+    {"Name":"Header1","Path":"/Main/"},
+    {"Name":"Header2","Path":"/Main/"},
+    {"Name":"Header3","Path":"/Main/"},
+    {"Name":"Header4","Path":"/Main/"},
+    {"Name":"Header5","Path":"/Main/"},
+    {"Name":"Header6","Path":"/Main/"},
+    {"Name":"Iframe","Path":"/Main/"},
+    {"Name":"WebKit","Path":"/Main/"},
+    {"Name":"Video","Path":"/Main/"},
+    {"Name":"TextArea","Path":"/Main/"},
+    {"Name":"Input","Path":"/Main/"},
+    {"Name":"Arc","Path":"/Main/"}
 ]
