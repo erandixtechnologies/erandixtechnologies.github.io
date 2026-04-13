@@ -1,0 +1,12 @@
+div{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background: #cdcdcd30;
+    display: block;
+    overflow: hidden;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}

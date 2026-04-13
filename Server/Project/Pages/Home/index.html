@@ -1,9 +1,37 @@
-<footer>
+<header>
 
-    <p class="Test">Catergory</p>
+    <h1 class="LeftText">Erandix Technologies</h1>
 
-    <p>Shop</p>
+    <h1 style="background:green;padding:1vh;" class="RightText"><a style="color:white;" href="">Order</a></h1>
 
-    <p>User Account</p>
+</header>
 
-</footer>
+<div style="text-align:left;padding:3vw;" id="Top50">
+
+    <h1 style="text-align: center;" >WELCOME</h1>
+
+    <br>
+
+    <p>Erandix Technologies is a Power House Software Development Company that Uses Cloud Native Technology to Power Up its Services.</p>
+    
+    <br>
+
+    <p>Erandix is Located in Mbale City and Ready to Serve You With Your Business Problems With Real Working Solutions that turn your Company Around and Starts to Make Profits on Instant. </p>
+
+    <footer class="HomeFooter">
+
+        ${
+            CONDITION(localStorage.getItem("AppMode"),()=>{
+
+                DISPLAY(".HomeFooter",`<p>Light Mode</p>`);
+
+            },()=>{
+
+                DISPLAY(".HomeFooter",`<p>Dark Mode</p>`);
+
+            });
+        }
+
+    </footer>
+
+</div>

@@ -8,7 +8,7 @@ if (localStorage.getItem("Env") === "Dev" ) {
                 try {
                     const fileRes = await fetch(`./Project/Pages/${element.Name}/index.js`);
                     const code = await fileRes.text();
-                    mergedCode += code+"\n";
+                    mergedCode +=code+"\n";
                 } catch (error) {
                     console.log(error);
                 };
@@ -27,7 +27,7 @@ if (localStorage.getItem("Env") === "Dev" ) {
                 try {
                     const fileRes = await fetch(`./Project/Pages/${element.Name}/index.css`);
                     const code = await fileRes.text();
-                    mergedCode +=  code+"\n";
+                    mergedCode +=code+"\n";
                 } catch (error) {
                     console.log(error);
                 };
@@ -104,7 +104,67 @@ if (localStorage.getItem("Env") === "Dev") {
             console.log(error);
         };
     })();
-
+    (async () => {
+        try {
+            const res = await fetch("./Connection/Pages.json");
+            const Data = await res.json();
+            let mergedCode = "";
+        for (const element of Data) {
+            try {
+                const fileRes = await fetch(`./Library/Pages/${element.Path}/${element.Name}/index.html`);
+                const code = await fileRes.text();
+                const varName = `${element.Name}Page`.replace(/[^a-zA-Z0-9]/g, "");
+                const wrapped = `const ${varName} = \`${code}\`;`;
+                mergedCode += wrapped+"\n";
+            } catch (error) {
+                console.log(error);
+            };
+        };
+        localStorage.setItem("PAGES", mergedCode);
+        } catch (error) {
+            console.log(error);
+        };
+    })();
+    (async () => {
+        try {
+            const res = await fetch("./Connection/Pages.json");
+            const Data = await res.json();
+            let mergedCode = "";
+            for (const element of Data) {
+                try {
+                    const fileRes = await fetch(`./Library/Pages/${element.Path}/${element.Name}/index.css`);
+                    const code = await fileRes.text();
+                    mergedCode += "\n\n" + code;
+                } catch (error) {
+                    console.log(error);
+                };
+            };
+            localStorage.setItem("PAGESSTYLES", mergedCode);
+        } catch (error) {
+            console.log(error);
+        };
+    })();
+    (async () => {
+        try {
+            const res = await fetch("./Connection/Pages.json");
+            const Data = await res.json();
+            let mergedCode = "";
+        for (const element of Data) {
+            try {
+                const fileRes = await fetch(`./Library/Pages/${element.Path}/${element.Name}/index.js`);
+                const code = await fileRes.text();
+                const varName = `${element.Name}Functions`.replace(/[^a-zA-Z0-9]/g, "");
+                const wrapped = `const ${varName} =()=>{${code}};`;
+                mergedCode += wrapped+"\n";
+            } catch (error) {
+                console.log(error);
+            };
+        };
+        localStorage.setItem("PAGESFUNCTIONS", mergedCode);
+        } catch (error) {
+            console.log(error);
+        };
+    })();
 }else{
     
 };

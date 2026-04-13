@@ -5,6 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erandix Technologies</title>
 </head>
+<style>
+    body{
+        font-family: Cambria;
+        padding: 0;
+        margin:0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: block;
+    }
+    .OfflineTitle{
+        padding: 5vh;
+    }
+    .OfflineHolder{
+        width: 100%;
+        height: 50px;
+        display: inline-flex;
+    }
+    .OfflineButton{
+        margin: auto;
+        height: 40px;
+        width:45%;
+        border:none;
+        color:white;
+        border-radius: 10px;
+    }
+    .OfflineFooter{
+        position: absolute;
+        bottom:0;
+        width:100%;
+        height:100px;
+        display:inline-flex;
+        left: 0;
+        font-style: bold;
+    }
+    p{
+        margin: auto;
+    }
+    .ModeDiv{
+        position: absolute;
+        top:1vh;
+        right: 3vh;
+        height: 50px;
+        width:50px;
+        background: black;
+        border-radius: 100%;
+    }
+</style>
 <body></body>
 <script>
     const ROUTEJS=(NAME)=>{
@@ -48,12 +97,53 @@
         };
     };
     if (localStorage.getItem("Updates")) {
-       ROUTEJS("ERANDIXCONFIG");AUTOSTART();
+       ROUTEJS("ERANDIXCONFIG");APPMODE();AUTOSTART();
     } else {
         if (navigator.onLine) {
             AUTOSTART();
         } else {
-     
+            BODY.innerHTML=`
+                <div class="ModeDiv"></div>
+                <h1 class="OfflineTitle">OFFLINE</h1>
+                <p>Failed To Download New Assets.</p>
+                <br><br>
+                <p>Please Connect to the Internet and Try Again.</p>
+                <br><br>
+                <div class="OfflineHolder">
+                    <button id="Reconnect" style="background: forestgreen;" class="OfflineButton">Retry</button>
+                    <button id="ContactAdmin" style="background: teal;"  class="OfflineButton" >Contact Admin</button>
+                </div>
+                <footer class="OfflineFooter">
+                    <p style="color: green;"> @ Erandix Technologies</p>
+                </footer>
+            `;
+            const ModeDiv=document.querySelector(".ModeDiv");
+            if (localStorage.getItem("AppMode")) {
+                BODY.style.background="#000000";
+                BODY.style.color="#FFFFFF";
+                ModeDiv.style.background="#FFFFFF";
+            } else {
+                BODY.style.background="#FFFFFF";
+                BODY.style.color="#000000";
+                ModeDiv.style.background="#000000";
+            }
+            ModeDiv.addEventListener("click",()=>{
+                if (localStorage.getItem("AppMode")) {
+                    localStorage.removeItem("AppMode");
+                    location.reload();
+                }else{
+                    localStorage.setItem("AppMode","True");
+                    location.reload();
+                };
+            });
+            const Reconnect=document.querySelector("#Reconnect");
+            Reconnect.addEventListener("click",()=>{
+                location.reload();
+            });
+            const ContactAdmin=document.querySelector("#ContactAdmin");
+            ContactAdmin.addEventListener("click",()=>{
+                location.href="https://erandixtechnologies.github.io/BrokenLinks.html"
+            });  
         }; 
     };
 </script>

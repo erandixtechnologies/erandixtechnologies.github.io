@@ -1,3 +1,7 @@
 [
-   {"Name":"Build","Path":"/Server/"},{"Name":"Add","Path":"/Main/"},{"Name":"Display","Path":"/Main/"}
+   {"Name":"Add","Path":"/Main/"},{"Name":"Condition","Path":"/Main/"},{"Name":"Display","Path":"/Main/"},
+   
+   {"Name":"AppMode","Path":"/Templates/"},
+
+   {"Name":"Build","Path":"/Server/"}
 ]
